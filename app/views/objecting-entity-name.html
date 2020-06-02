@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+  Your full name
+{% endblock %}
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "alpha"
+    },
+    html: 'This is a new service - Help us improve it by providing <a class="govuk-link" href="https://www.research.net/" target="_blank">feedback <span class="govuk-visually-hidden">(This link opens in a new window)</span></a>'
+  }) }}
+  {{ govukBackLink({
+    href: "/",
+    text: "Back"
+  }) }}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/objecting-entity-name" method="post">
+        {% if errorNametwo == true %}
+          {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: errorList
+          }) }}
+          {{ govukInput({
+            label: {
+              text: "Your full name",
+              isPageHeading: true,
+              classes: "govuk-label--xl"
+            },
+            id: "full-name",
+            name: "full-name",
+            autocomplete: "name",
+            attributes: {
+              spellcheck: "false"
+            },
+            errorMessage: {
+              text: "Full name must only include letters a to z, hyphens, spaces and apostrophes"
+            }
+          }) }}
+          {% elif errorName == true %}
+            {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errorList
+            }) }}
+            {{ govukInput({
+              label: {
+                text: "Your full name",
+                isPageHeading: true,
+                classes: "govuk-label--xl"
+              },
+              id: "full-name",
+        name: "full-name",
+        autocomplete: "name",
+        attributes: {
+          spellcheck: "false"
+        },
+        errorMessage: {
+            text: "Enter your full name"
+          }
+        }) }}
+          {% else %}
+            {{ govukInput({
+              label: {
+                text: "Your full name",
+                isPageHeading: true,
+                classes: "govuk-label--xl"
+              },
+              id: "full-name",
+              name: "full-name",
+              autocomplete: "name",
+              attributes: {
+                spellcheck: "false"
+              }
+            }) }}
+        {% endif %}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
