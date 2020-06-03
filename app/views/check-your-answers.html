@@ -1,0 +1,147 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers before submitting your objection
+{% endblock %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/upload"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Check your objection
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Company details
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Company name"
+            },
+            value: {
+              text: scenario.company.name
+            }
+          },
+          {
+            key: {
+              text: "Company number"
+            },
+            value: {
+              text: scenario.company.number
+            }
+          }
+     ] }) }}
+
+      <h2 class="govuk-heading-m">
+        Your details
+      </h2>
+
+      {{ govukSummaryList({
+       rows: [
+         {
+           key: {
+             text: "Full name"
+           },
+           value: {
+             text: fullName
+           }
+         },
+         {
+           key: {
+             text: "Email address"
+           },
+           value: {
+             text: email
+           }
+         }
+    ] }) }}
+
+      {% if reason.documents.length > 0 %}
+        {% if reason.documents.length > 1 %}
+
+          {% set documentList %}
+          <ul class="govuk-list govuk-list--bullet">
+            {% for document in session.doc | reverse %}
+              <li>
+                <a href='' class='govuk-link' download="download">{{ document }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+          {% endset %}
+
+        {% else %}
+
+          {% set documentList %}
+          <a href='' class='govuk-link' download="download">{{ session.documents }}</a>
+          {% endset %}
+
+        {% endif %}
+
+        {% set documents = {
+          key: {
+            text: "Supporting documents"
+          },
+          value: {
+            html: documentList
+          }
+        }
+ %}
+      {% else %}
+        {% set documents = {
+          key: {
+            text: "Supporting documents"
+          },
+          value: {
+            text: "None"
+          }
+        }
+ %}
+      {% endif %}
+
+      <h2 class="govuk-heading-m">
+        Objection details
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Information"
+            },
+            value: {
+              text: information
+            }
+          },
+          {
+            key: {
+              text: "Supporting documents"
+            },
+            value: {
+              text: documents
+            }
+          }
+     ] }) }}
+
+      <h2 class="govuk-heading-m">Submit your objection</h2>
+      <p>
+        By submitting this objection you are confirming that, to the best of your knowledge, the details you are providing are true.
+      </p>
+      <form action="" method="post">
+        {{ govukButton({
+            text: "Confirm and submit objection"
+          }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

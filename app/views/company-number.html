@@ -2,18 +2,14 @@
 {% block pageTitle %}
   What is the company number
 {% endblock %}
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "alpha"
-    },
-    html: 'This is a new service - Help us improve it by providing <a class="govuk-link" href="https://www.research.net/" target="_blank">feedback <span class="govuk-visually-hidden">(This link opens in a new window)</span></a>'
-  }) }}
+
+{% block backLink %}
   {{ govukBackLink({
   href: "/objecting-entity-contact-details",
   text: "Back"
 }) }}
 {% endblock %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">

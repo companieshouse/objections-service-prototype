@@ -90,6 +90,63 @@ router.post('/company-number', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('/review-company')
+    req.session.scenario = require('../app/assets/data/scenarios/' + companyNumber)
+    res.redirect('/confirm-company')
   }
+})
+router.get('/confirm-company', function (req, res) {
+  var scenario = req.session.scenario
+
+  res.render('confirm-company', {
+    scenario: scenario
+  })
+  router.post('/confirm-company', function (req, res) {
+    res.redirect('/enter-information')
+  })
+})
+router.get('/enter-information', function (req, res) {
+  var scenario = req.session.scenario
+
+  res.render('enter-information', {
+    scenario: scenario
+  })
+  router.post('/enter-information', function (req, res) {
+    var information = req.session.data['information']
+    console.log(req.session.information)
+    res.redirect('/upload')
+  })
+})
+router.get('/upload', function (req, res) {
+  res.render('upload', {
+  })
+})
+router.post('/upload', function (req, res) {
+  var doc = req.body.fileUpload
+  var fileName = []
+
+  fileName = doc.split('.').pop()
+
+  res.render('upload', {
+    doc: doc.split('\\')
+  })
+  req.session.doc = req.body.fileUpload
+  res.redirect('/check-your-answers')
+})
+router.get('/check-your-answers', function (req, res) {
+  var scenario = req.session.scenario
+  var fullName = req.session.data['full-name']
+  var email = req.session.data['email']
+  var information = req.session.data['information']
+  var documents = req.session.doc
+
+  res.render('check-your-answers', {
+    scenario: scenario,
+    fullName: fullName,
+    email: email,
+    information: information,
+    documents: documents
+  })
+  router.post('/check-your-answers', function (req, res) {
+    res.redirect('/confirmation')
+  })
 })
