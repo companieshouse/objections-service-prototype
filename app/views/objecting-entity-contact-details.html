@@ -2,13 +2,7 @@
 {% block pageTitle %}
   Your contact details
 {% endblock %}
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "alpha"
-    },
-    html: 'This is a new service - Help us improve it by providing <a class="govuk-link" href="https://www.research.net/" target="_blank">feedback <span class="govuk-visually-hidden">(This link opens in a new window)</span></a>'
-  }) }}
+{% block backLink %}
   {{ govukBackLink({
     href: "objecting-entity-details-name",
     text: "Back"
@@ -43,7 +37,7 @@
               spellcheck: "false"
             }
           }) }}
-        {{ govukInput({
+          {{ govukInput({
           label: {
             text: "Phone number (optional)"
           },
@@ -53,7 +47,7 @@
           autocomplete: "tel",
           classes: "govuk-input--width-20"
         }) }}
-        {{ govukCheckboxes({
+          {{ govukCheckboxes({
           idPrefix: "waste",
           name: "waste",
           fieldset: {
@@ -69,7 +63,7 @@
           ]
         }) }}
 
-        {{ govukDetails({
+          {{ govukDetails({
           summaryText: "More information about our user panel",
           html: "You’ll need to be 18 or over. We’ll ask a few questions about what you do. You don’t need to be good with computers or the internet to join.
             <br/><br/>

@@ -2,13 +2,7 @@
 {% block pageTitle %}
   Your full name
 {% endblock %}
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "alpha"
-    },
-    html: 'This is a new service - Help us improve it by providing <a class="govuk-link" href="https://www.research.net/" target="_blank">feedback <span class="govuk-visually-hidden">(This link opens in a new window)</span></a>'
-  }) }}
+{% block backLink %}
   {{ govukBackLink({
     href: "/",
     text: "Back"
@@ -39,12 +33,12 @@
               text: "Full name must only include letters a to z, hyphens, spaces and apostrophes"
             }
           }) }}
-          {% elif errorName == true %}
-            {{ govukErrorSummary({
+        {% elif errorName == true %}
+          {{ govukErrorSummary({
               titleText: "There is a problem",
               errorList: errorList
             }) }}
-            {{ govukInput({
+          {{ govukInput({
               label: {
                 text: "Your full name",
                 isPageHeading: true,
@@ -60,8 +54,8 @@
             text: "Enter your full name"
           }
         }) }}
-          {% else %}
-            {{ govukInput({
+        {% else %}
+          {{ govukInput({
               label: {
                 text: "Your full name",
                 isPageHeading: true,
