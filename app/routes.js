@@ -59,7 +59,7 @@ router.post('/objecting-entity-contact-details', function (req, res) {
       text: 'Enter your email address',
       href: '#email'
     })
-    res.render('obliged-entity-details-telephone', {
+    res.render('objecting-entity-contact-details', {
       errorEmail: true,
       errorList: errors
     })
@@ -74,10 +74,6 @@ router.get('/company-number', function (req, res) {
 })
 
 router.post('/company-number', function (req, res) {
-  console.log('full name = ' + req.session.data['full-name'] +
-              'email = ' + req.session.data['email'] +
-              'telephone number = ' + req.session.data['telephone-number'] +
-              'company number = ' + req.session.data['company-number'])
   var companyNumber = req.session.data['company-number']
   var errors = []
   if (companyNumber === '') {
@@ -130,7 +126,7 @@ router.post('/upload', function (req, res) {
     doc: doc.split('\\')
   })
   req.session.doc = req.body.fileUpload
-  res.redirect('/confirmation')
+  res.redirect('/check-your-answers')
 })
 router.get('/check-your-answers', function (req, res) {
   var scenario = req.session.scenario
@@ -147,16 +143,6 @@ router.get('/check-your-answers', function (req, res) {
     documents: documents
   })
   router.post('/check-your-answers', function (req, res) {
-    res.redirect('/confirmation')
-  })
-})
-router.get('/confirmation', function (req, res) {
-  var email = req.session.data['email']
-
-  res.render('confirmation', {
-    email: email
-  })
-  router.post('/confirmation', function (req, res) {
     res.redirect('/confirmation')
   })
 })
