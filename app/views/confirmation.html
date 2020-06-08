@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Confirmation page example
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">Objection complete</h1>
+        <div class="govuk-panel__body">
+          Your reference number<br>
+          <strong>HDJ2123F</strong>
+        </div>
+      </div>
+
+      <p>
+        We have sent a confirmation email to
+        <span class="govuk-body-l govuk-!-font-weight-bold">{{ email }}</span>
+        which contains the information you've provided for this objection.
+      </p>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+      <p>We’ll review the objection and email you with a decision within 10 working days.</p>
+      <p>We may contact you during the review process if we need more information.</p>
+      <p>
+        <a href="https://www.research.net/">What did you think of this service?</a>
+        (takes 30 seconds)</p>
+
+    </div>
+  </div>
+
+{% endblock %}
