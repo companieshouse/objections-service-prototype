@@ -130,7 +130,7 @@ router.post('/upload', function (req, res) {
     doc: doc.split('\\')
   })
   req.session.doc = req.body.fileUpload
-  res.redirect('/check-your-answers')
+  res.redirect('/confirmation')
 })
 router.get('/check-your-answers', function (req, res) {
   var scenario = req.session.scenario
@@ -147,6 +147,16 @@ router.get('/check-your-answers', function (req, res) {
     documents: documents
   })
   router.post('/check-your-answers', function (req, res) {
+    res.redirect('/confirmation')
+  })
+})
+router.get('/confirmation', function (req, res) {
+  var email = req.session.data['email']
+
+  res.render('confirmation', {
+    email: email
+  })
+  router.post('/confirmation', function (req, res) {
     res.redirect('/confirmation')
   })
 })
