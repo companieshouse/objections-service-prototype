@@ -19,30 +19,6 @@
       </h1>
 
       <h2 class="govuk-heading-m">
-        Company details
-      </h2>
-
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Company name"
-            },
-            value: {
-              text: scenario.company.name
-            }
-          },
-          {
-            key: {
-              text: "Company number"
-            },
-            value: {
-              text: scenario.company.number
-            }
-          }
-     ] }) }}
-
-      <h2 class="govuk-heading-m">
         Your details
       </h2>
 
@@ -65,6 +41,30 @@
            }
          }
     ] }) }}
+
+      <h2 class="govuk-heading-m">
+        Company details
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Company name"
+            },
+            value: {
+              text: scenario.company.name
+            }
+          },
+          {
+            key: {
+              text: "Company number"
+            },
+            value: {
+              text: scenario.company.number
+            }
+          }
+     ] }) }}
 
       {% if reason.documents.length > 0 %}
         {% if reason.documents.length > 1 %}
@@ -95,7 +95,7 @@
             html: documentList
           }
         }
- %}
+        %}
       {% else %}
         {% set documents = {
           key: {
@@ -105,7 +105,7 @@
             text: "None"
           }
         }
- %}
+        %}
       {% endif %}
 
       <h2 class="govuk-heading-m">
