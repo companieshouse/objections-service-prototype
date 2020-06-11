@@ -133,8 +133,9 @@ router.post('/upload', function (req, res) {
   res.render('upload', {
     doc: doc.split('\\')
   })
+
   req.session.doc = req.body.fileUpload
-  res.redirect('/check-your-answers')
+  res.redirect('/upload')
 })
 router.get('/check-your-answers', function (req, res) {
   var scenario = req.session.scenario

@@ -34,6 +34,9 @@
         <h1 class="govuk-heading-xl">
           Add documents to support your objection
         </h1>
+        <p class="govuk-body-m">
+          Documents must show the company name and be no more than 6 months old.
+        </p>
 
         {% if Err %}
           <p class="govuk-body-l">
@@ -77,9 +80,9 @@
           </div>
         </div>
 
-        {% if reasonObject.documents.length > 0 %}
+        {% if documents.length > 0 %}
           <dl class="govuk-upload-list">
-            {% for document in reasonObject.documents | reverse %}
+            {% for document in documents | reverse %}
               <div class="ch-upload-list__row uploaded-file-{{loop.index0}}">
                 <dt class="ch-upload-list__key govuk-visually-hidden">
                   Uploaded file
@@ -97,13 +100,13 @@
           </dl>
         {% endif %}
 
-      {{ govukButton({
+        {{ govukButton({
         text: "Continue",
         href: check-your-answers
       }) }}
-      <p>
-        <a href="/check-your-answers" class="govuk-link">Continue without adding documents</a>
-      </p>
+        <p>
+          <a href="/check-your-answers" class="govuk-link">Continue without adding documents</a>
+        </p>
       </form>
     </div>
   </div>
