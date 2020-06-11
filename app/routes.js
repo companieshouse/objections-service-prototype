@@ -14,6 +14,15 @@ router.get('/start', function (req, res) {
   res.render('start')
 })
 
+router.get('/sign-in', function (req, res) {
+  res.render('sign-in')
+})
+
+router.post('/sign-in', function (req, res) {
+  req.session.userEmail = req.body.email
+  res.redirect('/objecting-entity-name')
+})
+
 router.get('/objecting-entity-name', function (req, res) {
   req.session.scenario = {}
   res.render('objecting-entity-name')
@@ -41,7 +50,7 @@ router.post('/objecting-entity-name', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('objecting-entity-contact-details')
+    res.redirect('/objecting-entity-contact-details')
   }
 })
 
@@ -51,15 +60,14 @@ router.get('/objecting-entity-contact-details', function (req, res) {
 })
 
 router.post('/objecting-entity-contact-details', function (req, res) {
-  var email = req.session.data['email']
-  var phoneNumber = req.session.data['telephone-number']
+  var email = req.session.data.email
   var errors = []
   if (email === '') {
     errors.push({
       text: 'Enter your email address',
       href: '#email'
     })
-    res.render('obliged-entity-details-telephone', {
+    res.render('objecting-entity-contact-details', {
       errorEmail: true,
       errorList: errors
     })
@@ -74,10 +82,6 @@ router.get('/company-number', function (req, res) {
 })
 
 router.post('/company-number', function (req, res) {
-  console.log('full name = ' + req.session.data['full-name'] +
-              'email = ' + req.session.data['email'] +
-              'telephone number = ' + req.session.data['telephone-number'] +
-              'company number = ' + req.session.data['company-number'])
   var companyNumber = req.session.data['company-number']
   var errors = []
   if (companyNumber === '') {
@@ -111,7 +115,7 @@ router.get('/enter-information', function (req, res) {
     scenario: scenario
   })
   router.post('/enter-information', function (req, res) {
-    var information = req.session.data['information']
+    var information = req.session.data.information
     console.log(req.session.information)
     res.redirect('/upload')
   })
@@ -136,8 +140,8 @@ router.post('/upload', function (req, res) {
 router.get('/check-your-answers', function (req, res) {
   var scenario = req.session.scenario
   var fullName = req.session.data['full-name']
-  var email = req.session.data['email']
-  var information = req.session.data['information']
+  var email = req.session.data.email
+  var information = req.session.data.information
   var documents = req.session.doc
 
   res.render('check-your-answers', {
@@ -148,16 +152,6 @@ router.get('/check-your-answers', function (req, res) {
     documents: documents
   })
   router.post('/check-your-answers', function (req, res) {
-    res.redirect('/confirmation')
-  })
-})
-router.get('/confirmation', function (req, res) {
-  var email = req.session.data['email']
-
-  res.render('confirmation', {
-    email: email
-  })
-  router.post('/confirmation', function (req, res) {
     res.redirect('/confirmation')
   })
 })
