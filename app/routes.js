@@ -50,7 +50,7 @@ router.post('/objecting-entity-name', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('/objecting-entity-contact-details')
+    res.redirect('/company-number')
   }
 })
 

@@ -12,14 +12,14 @@
 {% endblock %}
 
 {% set documentList %}
-  <ul class="govuk-list govuk-list--bullet">
-    <li>
-      <a href='' class='govuk-link'>Document1.jpg</a>
-    </li>
-    <li>
-      <a href='' class='govuk-link'>Document2.pdf</a>
-    </li>
-  </ul>
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    <a href='' class='govuk-link'>Document1.jpg</a>
+  </li>
+  <li>
+    <a href='' class='govuk-link'>Document2.pdf</a>
+  </li>
+</ul>
 {% endset %}
 
 {% block content %}
@@ -58,16 +58,7 @@
            },
            value: {
              text: email
-           },
-           actions: {
-              items: [
-                {
-                  href: "/objecting-entity-contact-details",
-                  text: "Change",
-                  visuallyHiddenText: "change email"
-                }
-              ]
-            }
+           }
          }
     ] }) }}
 
@@ -136,6 +127,14 @@
             }
           }
      ] }) }}
+
+      {{ govukCheckboxes({
+          idPrefix: "consent",
+          name: "consent",
+          fieldset: {
+            legend: {
+              html: "We may need to share your identity with " + scenario.company.name
+           + ". Your details will not be shared in the public domain." } }, items: [ { value: "confirm", html: "Yes, I confirm I am happy to share the information I have given with " + scenario.company.name + "." } ] }) }}
 
       <h2 class="govuk-heading-m">Submit your objection</h2>
       <p>
