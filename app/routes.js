@@ -116,7 +116,6 @@ router.get('/enter-information', function (req, res) {
   })
   router.post('/enter-information', function (req, res) {
     var information = req.session.data.information
-    console.log(req.session.information)
     res.redirect('/upload')
   })
 })
