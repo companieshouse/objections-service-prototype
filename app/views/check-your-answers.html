@@ -1,0 +1,151 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers before submitting your objection
+{% endblock %}
+
+{% block backLink %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/upload"
+  }) }}
+{% endblock %}
+
+{% set documentList %}
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    <a href='' class='govuk-link'>Document1.jpg</a>
+  </li>
+  <li>
+    <a href='' class='govuk-link'>Document2.pdf</a>
+  </li>
+</ul>
+{% endset %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-xl">
+        Check your objection
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Your details
+      </h2>
+
+      {{ govukSummaryList({
+       rows: [
+         {
+           key: {
+             text: "Full name"
+           },
+           value: {
+             text: fullName
+           },
+           actions: {
+              items: [
+                {
+                  href: "/objecting-entity-name",
+                  text: "Change",
+                  visuallyHiddenText: "change name"
+                }
+              ]
+            }
+         },
+         {
+           key: {
+             text: "Email address"
+           },
+           value: {
+             text: email
+           }
+         }
+    ] }) }}
+
+      <h2 class="govuk-heading-m">
+        Company details
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Company name"
+            },
+            value: {
+              text: scenario.company.name
+            }
+          },
+          {
+            key: {
+              text: "Company number"
+            },
+            value: {
+              text: scenario.company.number
+            }
+          }
+     ] }) }}
+
+      <h2 class="govuk-heading-m">
+        Objection details
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Information"
+            },
+            value: {
+              text: information
+            },
+            actions: {
+              items: [
+                {
+                  href: "/enter-information",
+                  text: "Change",
+                  visuallyHiddenText: "change objection information"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Supporting documents"
+            },
+            value: {
+              html: documentList
+            },
+            actions: {
+              items: [
+                {
+                  href: "/upload",
+                  text: "Change",
+                  visuallyHiddenText: "change uploaded documents"
+                }
+              ]
+            }
+          }
+     ] }) }}
+
+      {{ govukCheckboxes({
+          idPrefix: "consent",
+          name: "consent",
+          fieldset: {
+            legend: {
+              html: "We may need to share your identity with " + scenario.company.name
+           + ". Your details will not be shared in the public domain." } }, items: [ { value: "confirm", html: "Yes, I confirm I am happy to share the information I have given with " + scenario.company.name + "." } ] }) }}
+
+      <h2 class="govuk-heading-m">Submit your objection</h2>
+      <p>
+        By submitting this objection you are confirming that, to the best of your knowledge, the details you are providing are true.
+      </p>
+      <form action="/check-your-answers" method="post">
+        {{ govukButton({
+            text: "Confirm and submit objection"
+          }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
