@@ -6,6 +6,9 @@ module.exports = {
     status: 'Active',
     incorporationDate: '01 April 2010',
     companyType: 'Private Limited Company',
-    address: '125 Feather Hedge<br>Salisbury<br>SP4 7DE'
+    address: '125 Feather Hedge<br>Salisbury<br>SP4 7DE',
+    actionCode: '5000',
+    datePublished: '17 June 2020',
+    expiryDate: '16 September 2020'
   }
 }
