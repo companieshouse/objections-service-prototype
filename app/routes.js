@@ -168,3 +168,12 @@ router.get('/check-your-answers', function (req, res) {
     res.redirect('/confirmation')
   })
 })
+router.get('/confirmation', function (req, res) {
+  var scenario = req.session.scenario
+  var email = req.session.data.email
+
+  res.render('confirmation', {
+    scenario: scenario,
+    email: email
+  })
+})
