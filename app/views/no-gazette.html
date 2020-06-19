@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Company not being struck off
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        You cannot use this service
+      </h1>
+      <p class="govuk-body-l">No notice to strike off has been posted for
+        {{ scenario.company.name }}
+        in The Gazette.
+      </p>
+      <p>{{ scenario.company.name }}
+        will remain on the Companies House register.
+        <a href="https://www.gov.uk/government/organisations/companies-house/about/access-and-opening">Contact us</a>
+        if you think this is wrong.<p>
+          <p>
+            <a href="/company-number">Object to a different company</a>
+            being struck off.</p>
+
+          <p>
+            <a href="https://www.research.net/">What did you think of this service?</a>
+            (takes 30 seconds)</p>
+        </div>
+      </div>
+    {% endblock %}
