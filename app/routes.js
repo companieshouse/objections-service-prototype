@@ -108,6 +108,20 @@ router.get('/confirm-company', function (req, res) {
     res.redirect('/enter-information')
   })
 })
+router.get('/notice-expired', function (req, res) {
+  var scenario = req.session.scenario
+
+  res.render('notice-expired', {
+    scenario: scenario
+  })
+})
+router.get('/no-gazette', function (req, res) {
+  var scenario = req.session.scenario
+
+  res.render('no-gazette', {
+    scenario: scenario
+  })
+})
 router.get('/enter-information', function (req, res) {
   var scenario = req.session.scenario
 
