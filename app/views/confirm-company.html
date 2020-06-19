@@ -7,7 +7,7 @@
 {% block backLink %}
   {{ govukBackLink({
     text: "Back",
-    href: ""
+    href: "/company-number"
   }) }}
 {% endblock %}
 
@@ -17,6 +17,30 @@
       <h1 class="govuk-heading-xl">Confirm this is the correct company</h1>
       <h2 class="govuk-heading-l">{{scenario.company.name}}</h2>
       <form action="" method="post">
+
+        {% set datePublishedHTML %}
+        {% if scenario.company.actionCode === '4000' %}
+          <p>The company has not been published in the Gazette</p>
+        {% elseif scenario.company.actionCode === '6000' %}
+          {{ scenario.company.datePublished}}
+        {% else %}
+          {{ scenario.company.datePublished}}
+        {% endif %}
+        {% endset %}
+
+        {% set expiryDateHTML %}
+        {% if scenario.company.actionCode === '4000' %}
+          <p>The company is not being struck off</p>
+        {% elseif scenario.company.actionCode === '6000' %}
+          {{ scenario.company.expiryDate}}
+          <p>
+            <b>The company notice period has expired</b>
+          </p>
+        {% else %}
+          {{ scenario.company.expiryDate}}
+        {% endif %}
+        {% endset %}
+
         {{ govukTable({
 
   firstCellIsHeader: true,
@@ -61,13 +85,44 @@
       {
         html: scenario.company.address | nl2br
       }
+    ],
+    [
+      {
+        text: "Date notice published in The Gazette"
+      },
+      {
+        html: datePublishedHTML
+      }
+    ],
+    [
+      {
+        text: "Date notice expires"
+      },
+      {
+        html: expiryDateHTML
+      }
     ]
   ]
 }) }}
 
-        {{ govukButton({
-text: "Confirm and continue"
+        {% if scenario.company.actionCode === '4000' %}
+          {{ govukButton({
+text: "Confirm and continue",
+href: "/no-gazette"
 }) }}
+
+        {% elseif scenario.company.actionCode === '5000' %}
+          {{ govukButton({
+text: "Confirm and continue",
+href: "/enter-information"
+}) }}
+
+        {% elseif scenario.company.actionCode === '6000' %}
+          {{ govukButton({
+text: "Confirm and continue",
+href: "/notice-expired"
+}) }}
+        {% endif %}
       </form>
     </div>
   </div>
