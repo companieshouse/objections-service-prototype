@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Check your answers before submitting your objection
+  Check your answers before submitting your objection application
 {% endblock %}
 
 {% block backLink %}
@@ -26,7 +26,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <h1 class="govuk-heading-xl">
-        Check your objection
+        Check your objection application
       </h1>
 
       <h2 class="govuk-heading-m">
@@ -41,16 +41,7 @@
            },
            value: {
              text: fullName
-           },
-           actions: {
-              items: [
-                {
-                  href: "/objecting-entity-name",
-                  text: "Change",
-                  visuallyHiddenText: "change name"
-                }
-              ]
-            }
+           }
          },
          {
            key: {
@@ -98,15 +89,6 @@
             },
             value: {
               text: information
-            },
-            actions: {
-              items: [
-                {
-                  href: "/enter-information",
-                  text: "Change",
-                  visuallyHiddenText: "change objection information"
-                }
-              ]
             }
           },
           {
@@ -115,15 +97,6 @@
             },
             value: {
               html: documentList
-            },
-            actions: {
-              items: [
-                {
-                  href: "/upload",
-                  text: "Change",
-                  visuallyHiddenText: "change uploaded documents"
-                }
-              ]
             }
           }
      ] }) }}
@@ -133,8 +106,8 @@
           name: "consent",
           fieldset: {
             legend: {
-              html: "We may need to share your identity with " + scenario.company.name
-           + ". Your details will not be shared in the public domain." } }, items: [ { value: "confirm", html: "Yes, I confirm I am happy to share the information I have given with " + scenario.company.name + "." } ] }) }}
+              html: "We may be asked by " + scenario.company.name
+           + " to divulge your identity and contact details as the objector. If you consent, this information will only be given to a company or a representative who has authority to act for them. Your details will not appear in the public domain." } }, items: [ { value: "confirm", html: "Yes, I consent to Companies House divulging my identity and contact details as the objector if that information is requested by the company." } ] }) }}
 
       <h2 class="govuk-heading-m">Submit your objection</h2>
       <p>

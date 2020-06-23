@@ -27,19 +27,6 @@
         <h1 class="govuk-heading-xl">Tell us why you're objecting to the company being struck off</h1>
         {% endset %}
 
-        {% set hintHTML %}
-        <p>Reasons for objecting to
-          {{ scenario.company.name }}
-          being struck off may include:<br>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>if you’ve not been told about the company’s decision</li>
-            <li>if you think the declarations on the company’s application are false</li>
-            <li>if the directors have broken the law, for example tax fraud</li>
-            <li>if you want to take legal action against the company</li>
-          </ul>
-        </p>
-        {% endset %}
-
         {% if errInformation.flag %}
           {% set informationError = {
             text: errInformation.text
@@ -58,9 +45,6 @@
             isPageHeading: true,
             classes: 'govuk-heading-large',
             value: information
-          },
-          hint: {
-            html: hintHTML
           }
         }) }}
 
