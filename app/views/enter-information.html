@@ -38,12 +38,16 @@
         {{ govukTextarea({
           name: "information",
           id: "information",
+          classes: "govuk-body",
+  hint: {
+    text: "Include any information that supports your objection application. You should tell us if you consent to details of this objection being divulged to the company if they request that information."
+  },
           errorMessage: informationError,
           rows: '8',
           label: {
-            html: titleHTML,
+            text: "Tell us why you're objecting to the company being struck off",
             isPageHeading: true,
-            classes: 'govuk-heading-large',
+            classes: 'govuk-label--xl',
             value: information
           }
         }) }}
