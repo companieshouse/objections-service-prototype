@@ -1,0 +1,7 @@
+{{ govukCheckboxes({
+    idPrefix: "consent",
+    name: "consent",
+    fieldset: {
+      legend: {
+        html: "We may be asked by " + scenario.company.name
+     + " to divulge your identity and contact details as the objector. If you consent, this information will only be given to a company or a representative who has authority to act for them. Your details will not appear in the public domain." } }, items: [ { value: "confirm", html: "Yes, I consent to Companies House divulging my identity and contact details as the objector if that information is requested by the company." } ] }) }}
