@@ -1,65 +1,61 @@
+{% set title = "Sign in to Companies House" %}
 {% extends "layout.html" %}
-
 {% block pageTitle %}
-  {% if errorList.length > 0 %}
-    Error:
-  {% endif %}
-  Sign in
+  {{title}}
 {% endblock %}
-
-{% block backLink %}
+{% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "start"
+    href: "index"
   }) }}
 {% endblock %}
-
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
-      {% if errorList.length > 0 %}
-        {{ govukErrorSummary({
-          titleText: "There was a problem signing you in",
-          errorList: errorList
-        }) }}
-      {% endif %}
-      <h1 class="govuk-heading-xl">Sign in to Companies House</h1>
+      <h1 class="govuk-heading-xl">{{title}}</h1>
+      <p class="govuk-body-m">You cannot use your WebFiling details to sign in. You must sign in to or register a Companies House account.</p>
       <form action="/sign-in" method="post">
-        {% if emailErr.flag %}
+        {% if errorEmail == true or errorPassword == true %}
+          {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errorList
+            }) }}
+        {% endif %}
+        {% if errorEmail == true %}
           {{ govukInput({
-              label: {
-                text: "Email address"
-              },
-              errorMessage: {
-                text: emailErr.text
-              },
-              id: "email",
-              name: "email",
-              value: email
+            label: {
+              text: "Email address"
+            },
+            id: "email",
+            type: "email",
+            name: "email",
+            autocomplete: "email",
+            errorMessage: {
+              text: "Enter your email address"
+            }
           }) }}
         {% else %}
           {{ govukInput({
             label: {
               text: "Email address"
             },
+            type: "email",
+            autocomplete: "email",
             id: "email",
-            name: "email",
-            value: email
+            name: "email"
           }) }}
         {% endif %}
-
-        {% if passwordErr.flag %}
+        {% if errorPassword == true %}
           {{ govukInput({
             label: {
               text: "Password"
             },
-            errorMessage: {
-              text: passwordErr.text
-            },
             id: "password",
             name: "password",
-            type: 'password',
-            value: password
+            type: "password",
+            errorMessage: {
+              text: "Enter your password"
+            }
           }) }}
         {% else %}
           {{ govukInput({
@@ -68,21 +64,19 @@
             },
             id: "password",
             name: "password",
-            type: 'password',
-            value: password
+            type: "password"
           }) }}
         {% endif %}
-
         {{ govukButton({
-          text: "Sign in"
+        text: "Sign in"
         }) }}
+        <p>
+          <a href="" class="govuk-link govuk-link--no-visited-state">Register a new account</a>
+        </p>
+        <p>
+          <a href="" class="govuk-link govuk-link--no-visited-state">I've forgotten my password</a>
+        </p>
       </form>
-      <p class="govuk-body">
-        <a href="" class="govuk-link">Register a new account</a>
-      </p>
-      <p class="govuk-body">
-        <a href="" class="govuk-link">I've forgotten my password</a>
-      </p>
     </div>
   </div>
 {% endblock %}
