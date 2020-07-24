@@ -19,7 +19,7 @@ router.get('/sign-in', function (req, res) {
 })
 
 router.post('/sign-in', function (req, res) {
-  req.session.userEmail = req.body.email
+  req.session.email = req.body.email
   res.redirect('/objecting-entity-name')
 })
 
