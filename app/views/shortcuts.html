@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Shortcuts (MVP)
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Shortcuts (MVP)</h1>
+      <h2 class="govuk-heading-l">Happy path</h2>
+      <ul class="govuk-list">
+        <li>
+          <a href="/start">Start</a>
+        </li>
+        <li>
+          <a href="/sign-in">Sign in</a>
+        </li>
+        <li>
+          <a href="/objecting-entity-name">Objecting entity name</a>
+        </li>
+        <li>
+          <a href="/company-number">Enter company number</a>
+        </li>
+        <li>
+          <a href="/confirm-company">Confirm company</a>
+        </li>
+        <li>
+          <a href="/enter-information">Enter information</a>
+        </li>
+        <li>
+          <a href="/confirm-company">Confirm company</a>
+        </li>
+        <li>
+          <a href="/upload">Add documents</a>
+        </li>
+        <ul class="govuk-bulleted--list">
+          <li>
+            <a href="/upload-with-doc">Document added</a>
+          </li>
+          <li>
+            <a href="/remove-document">Remove document</a>
+          </li>
+        </ul>
+        <li>
+          <a href="/check-your-answers">Check your answers</a>
+        </li>
+        <li>
+          <a href="/confirmation">Confirmation</a>
+        </li>
+      </ul>
+      <h2 class="govuk-heading-l">Stop pages</h2>
+      <ul class="govuk-list">
+        <li>
+          <a href="/no-gazette">Company not published in the gazette</a>
+        </li>
+        <li>
+          <a href="/notice-expired">Company already struck off</a>
+        </li>
+      </ul>
+      <h2 class="govuk-heading-l">Error pages</h2>
+      <ul class="govuk-list">
+        <li>
+          <a href="/service-offline">Service offline</a>
+        </li>
+        <li>
+          <a href="/page-not-found">Page not found</a>
+        </li>
+      </ul>
+      <h2 class="govuk-heading-l">Emails</h2>
+      <ul class="govuk-list">
+        <li>
+          <a href="/emails/user-email">User (MVP)</a>
+        </li>
+        <li>
+          <a href="/emails/business-email">Business (MVP)</a>
+        </li>
+      </ul>
+      <h2 class="govuk-heading-l">Resources</h2>
+      <ul class="govuk-list">
+        <li>
+          <a href="https://companieshouse.atlassian.net/wiki/spaces/TTL/pages/1801256988/Prototype">Company numbers</a>
+        </li>
+      </ul>
+    </div>
+  {% endblock %}

@@ -36,10 +36,10 @@
         </h1>
         <p class="govuk-body-m">Documents must:</p>
         <ul class="govuk-list govuk-list--bullet">
-          <li>show the full name of the company being struck off</li>
+          <li>show the company name in full</li>
           <li>show how the company is being pursued</li>
-          <li>be no more than 6 months older than today's date</li>
-          <li>show evidence that supports your objection, such as invoices or court documents</li>
+          <li>be no more than 6 months old</li>
+          <li>offer evidence that supports your objection, like invoices or court documents</li>
         </ul>
       </p>
 
@@ -50,7 +50,7 @@
         <ul class="govuk-list govuk-list--bullet">
           <li>Text (doc, docx, pdf, txt)</li>
           <li>Images (jpg, gif, tiff)</li>
-          <li>Video (mpeg,avi, mov, mp4, wmv)</li>
+          <li>Video (mpeg, avi, mov, mp4, wmv)</li>
         </ul>
       {% endif %}
 
@@ -85,25 +85,21 @@
         </div>
       </div>
 
-      {% if documents.length > 0 %}
-        <dl class="govuk-upload-list">
-          {% for document in documents | reverse %}
-            <div class="ch-upload-list__row uploaded-file-{{loop.index0}}">
-              <dt class="ch-upload-list__key govuk-visually-hidden">
-                Uploaded file
-              </dt>
-              <dd class="ch-upload-list__value">
-                <a href="#" class="govuk-link">{{ document }}</a>
-              </dd>
-              <dd class="ch-upload-list__actions">
-                <a class="govuk-link" href="remove-document?documentID={{loop.revindex0}}&reasonID={{ id }}">
-                  Remove
-                </a>
-              </dd>
-            </div>
-          {% endfor %}
-        </dl>
-      {% endif %}
+      <dl class="govuk-upload-list">
+        <div class="ch-upload-list__row uploaded-file-{{loop.index0}}">
+          <dt class="ch-upload-list__key govuk-visually-hidden">
+            Uploaded file
+          </dt>
+          <dd class="ch-upload-list__value">
+            <a href="#" class="govuk-link">contract.pdf</a>
+          </dd>
+          <dd class="ch-upload-list__actions">
+            <a class="govuk-link" href="/remove-document">
+              Remove
+            </a>
+          </dd>
+        </div>
+      </dl>
 
       {{ govukButton({
         text: "Continue",
