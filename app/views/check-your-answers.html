@@ -14,10 +14,10 @@
 {% set documentList %}
 <ul class="govuk-list govuk-list--bullet">
   <li>
-    <a href='' class='govuk-link'>Document1.jpg</a>
+    Document1.jpg
   </li>
   <li>
-    <a href='' class='govuk-link'>Document2.pdf</a>
+    Document2.pdf
   </li>
 </ul>
 {% endset %}
@@ -127,14 +127,6 @@
             }
           }
      ] }) }}
-
-      {{ govukCheckboxes({
-          idPrefix: "consent",
-          name: "consent",
-          fieldset: {
-            legend: {
-              html: "We may need to share your identity with " + scenario.company.name
-           + ". Your details will not be shared in the public domain." } }, items: [ { value: "confirm", html: "Yes, I confirm I am happy to share the information I have given with " + scenario.company.name + "." } ] }) }}
 
       <h2 class="govuk-heading-m">Submit your objection</h2>
       <p>
