@@ -105,6 +105,13 @@
         </dl>
       {% endif %}
 
+      {{ govukInput({
+              id: "id",
+              name: "id",
+              type: "hidden",
+              value: id
+            }) }}
+
       {{ govukButton({
         text: "Continue",
         href: "check-your-answers"
