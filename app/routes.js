@@ -21,6 +21,7 @@ router.get('/sign-in', function (req, res) {
 })
 
 router.post('/sign-in', function (req, res) {
+  var email = req.session.data.email
   var errors = []
   var emailHasError = false
   var passwordHasError = false
@@ -36,7 +37,8 @@ router.post('/sign-in', function (req, res) {
     passwordHasError = true
     errors.push({
       text: 'Enter a password',
-      href: '#password-error'
+      href: '#password-error',
+      email: email
     })
   }
 
@@ -44,7 +46,8 @@ router.post('/sign-in', function (req, res) {
     res.render('sign-in', {
       errorEmail: emailHasError,
       errorPassword: passwordHasError,
-      errorList: errors
+      errorList: errors,
+      email: email
     })
   } else {
     res.redirect('/company-number')
