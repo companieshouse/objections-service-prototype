@@ -24,13 +24,24 @@ router.post('/sign-in', function (req, res) {
 })
 
 router.get('/objecting-entity-name', function (req, res) {
-  req.session.scenario = {}
+  var id = 0
+  var info = ''
+  // if (req.query.id) {
+    // id = req.query.id
+    // info = req.session.data['full-name'][id]
+    // res.render('objecting-entity-name', {
+      // id: id,
+      // info: info
+    // })
+  // } else {
   res.render('objecting-entity-name')
 })
 
 router.post('/objecting-entity-name', function (req, res) {
   var fullName = req.session.data['full-name']
+  // var editId = req.body.editId
   var errors = []
+
   if (fullName === '') {
     errors.push({
       text: 'Enter your full name',
@@ -123,6 +134,7 @@ router.get('/no-gazette', function (req, res) {
   })
 })
 router.get('/enter-information', function (req, res) {
+  var id = req.query.id
   var scenario = req.session.scenario
 
   res.render('enter-information', {
@@ -134,6 +146,8 @@ router.get('/enter-information', function (req, res) {
   })
 })
 router.get('/upload', function (req, res) {
+  var id = req.query.id
+
   res.render('upload', {
   })
 })
@@ -156,6 +170,11 @@ router.get('/check-your-answers', function (req, res) {
   var email = req.session.data.email
   var information = req.session.data.information
   var documents = req.session.doc
+  var i
+
+  for (i = 0; i < req.session.data.length; i++) {
+    req.session.data[i].complete = true
+  }
 
   res.render('check-your-answers', {
     scenario: scenario,
