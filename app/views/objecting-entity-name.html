@@ -68,7 +68,32 @@
                 spellcheck: "false"
               }
             }) }}
+
         {% endif %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "divulge-info",
+  name: "divulge-info",
+  fieldset: {
+    legend: {
+      text: "Can we share your name and email address with the company if they request that information?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
 
         {{ govukInput({
         id: "editId",
