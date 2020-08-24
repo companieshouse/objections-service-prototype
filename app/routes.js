@@ -39,6 +39,7 @@ router.get('/objecting-entity-name', function (req, res) {
 
 router.post('/objecting-entity-name', function (req, res) {
   var fullName = req.session.data['full-name']
+  var divulgeInfo = req.session.data['divulge-info']
   // var editId = req.body.editId
   var errors = []
 
@@ -51,13 +52,22 @@ router.post('/objecting-entity-name', function (req, res) {
       errorName: true,
       errorList: errors
     })
-  } else if (fullName === '@') {
+  } if (fullName === '@') {
     errors.push({
       text: 'Full name must only include letters a to z, hyphens, spaces and apostrophes',
       href: '#full-name'
     })
     res.render('objecting-entity-name', {
       errorNametwo: true,
+      errorList: errors
+    })
+  } if (divulgeInfo === 'undefined') {
+    errors.push({
+      text: 'Select yes if we can share your details',
+      href: '#divulge-info'
+    })
+    res.render('objecting-entity-name', {
+      errorDivulge: true,
       errorList: errors
     })
   } else {
@@ -167,6 +177,7 @@ router.post('/upload', function (req, res) {
 router.get('/check-your-answers', function (req, res) {
   var scenario = req.session.scenario
   var fullName = req.session.data['full-name']
+  var divulgeInfo = req.session.data['divulge-info']
   var email = req.session.data.email
   var information = req.session.data.information
   var documents = req.session.doc
@@ -179,6 +190,7 @@ router.get('/check-your-answers', function (req, res) {
   res.render('check-your-answers', {
     scenario: scenario,
     fullName: fullName,
+    divulgeInfo: divulgeInfo,
     email: email,
     information: information,
     documents: documents

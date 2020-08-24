@@ -37,6 +37,14 @@
        rows: [
          {
            key: {
+             text: "Email address"
+           },
+           value: {
+             text: email
+           }
+         },
+         {
+           key: {
              text: "Full name"
            },
            value: {
@@ -54,19 +62,20 @@
          },
          {
            key: {
-             text: "Email address"
+             text: "Share identity if company requests it?"
            },
            value: {
-             text: email
-           }
-         },
-         {
-           key: {
-             text: "Identity shared if requested by the company?"
+             html: divulgeInfo | capitalize
            },
-           value: {
-             text: divulge-info
-           }
+           actions: {
+              items: [
+                {
+                  href: "/objecting-entity-name/?id=1",
+                  text: "Change",
+                  visuallyHiddenText: "change information shared"
+                }
+              ]
+            }
          }
     ] }) }}
 

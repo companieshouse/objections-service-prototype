@@ -70,7 +70,38 @@
             }) }}
 
         {% endif %}
-        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {% if errorDivulge === true %}
+          {{ govukErrorSummary({
+    titleText: "There is a problem",
+    errorList: errorList
+  }) }}
+          {{ govukRadios({
+classes: "govuk-radios--inline",
+idPrefix: "divulge-info",
+name: "divulge-info",
+fieldset: {
+legend: {
+text: "Can we share your name and email address with the company if they request that information?",
+isPageHeading: false,
+classes: "govuk-fieldset__legend--m"
+}
+},
+errorMessage: {
+text: "Select yes if we can share your details"
+},
+items: [
+{
+value: "yes",
+text: "Yes"
+},
+{
+value: "no",
+text: "No"
+}
+]
+}) }}
+        {% endif %}
 
         {{ govukRadios({
   classes: "govuk-radios--inline",

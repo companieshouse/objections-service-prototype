@@ -3,7 +3,7 @@ module.exports = {
     name: 'RUBBER DUCKY BATHING LIMITED',
     number: '00116000',
     authCode: '222222',
-    status: 'Active',
+    status: 'Dissolved',
     incorporationDate: '01 April 2010',
     companyType: 'Private Limited Company',
     address: '25 Tap Street<br>Salisbury<br>SP4 7DE',
