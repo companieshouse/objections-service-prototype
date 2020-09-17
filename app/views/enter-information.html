@@ -24,7 +24,7 @@
         {% endif %}
 
         {% set titleHTML %}
-        <h1 class="govuk-heading-xl">Tell us any additional information to support your application</h1>
+        <h1 class="govuk-heading-xl">Tell us why you're objecting to the company being struck off</h1>
         {% endset %}
 
         {% if errInformation.flag %}
@@ -39,23 +39,18 @@
           name: "information",
           id: "information",
           classes: "govuk-body",
-
+  hint: {
+    text: "Include any information that supports your objection application. You can upload documents on the next screen."
+  },
           errorMessage: informationError,
           rows: '8',
           label: {
-            text: "Tell us any additional information to support your application",
+            text: "Tell us why you're objecting to the company being struck off",
             isPageHeading: true,
             classes: 'govuk-label--xl',
             value: information
           }
         }) }}
-
-        {{ govukInput({
-        id: "id",
-        name: "id",
-        type: "hidden",
-        value: id
-      }) }}
 
         {{ govukButton({
           text: "Continue"

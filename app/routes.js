@@ -126,7 +126,7 @@ router.get('/confirm-company', function (req, res) {
     scenario: scenario
   })
   router.post('/confirm-company', function (req, res) {
-    res.redirect('/upload')
+    res.redirect('/enter-information')
   })
 })
 router.get('/notice-expired', function (req, res) {
@@ -152,7 +152,7 @@ router.get('/enter-information', function (req, res) {
   })
   router.post('/enter-information', function (req, res) {
     var information = req.session.data.information
-    res.redirect('/check-your-answers')
+    res.redirect('/upload')
   })
 })
 router.get('/upload', function (req, res) {
