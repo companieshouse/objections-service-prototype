@@ -20,9 +20,9 @@
 
         {% set datePublishedHTML %}
         {% if scenario.company.actionCode === '4000' %}
-          <p>The company has not been published in the Gazette</p>
+          <p>No notice in The Gazette</p>
         {% elseif scenario.company.actionCode === '6000' %}
-          {{ scenario.company.datePublished}}
+          <p>No notice in The Gazette</p>
         {% else %}
           {{ scenario.company.datePublished}}
         {% endif %}
@@ -34,10 +34,8 @@
         {% elseif scenario.company.actionCode === '6000' %}
           {{ scenario.company.expiryDate}}
           <p>
-            <b>The company notice period has expired</b>
+            <b>No notice in The Gazette</b>
           </p>
-        {% else %}
-          {{ scenario.company.expiryDate}}
         {% endif %}
         {% endset %}
 
