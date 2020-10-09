@@ -4,7 +4,7 @@ module.exports = {
     number: '00116000',
     authCode: '222222',
     status: 'Dissolved',
-    incorporationDate: '01 April 2010',
+    incorporationDate: '1 April 2010',
     companyType: 'Private Limited Company',
     address: '25 Tap Street<br>Salisbury<br>SP4 7DE',
     actionCode: '6000',
