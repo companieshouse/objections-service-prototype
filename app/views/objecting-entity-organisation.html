@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block pageTitle %}
-  Your full name or the name of your organisation
+  The name of your organisation
 {% endblock %}
 {% block backLink %}
   {{ govukBackLink({
@@ -19,18 +19,18 @@
           }) }}
           {{ govukInput({
             label: {
-              text: "What is your full name?",
+              text: "What is the name of your organisation?",
               isPageHeading: true,
               classes: "govuk-label--xl"
             },
-            id: "full-name",
-            name: "full-name",
+            id: "name",
+            name: "name",
             autocomplete: "name",
             attributes: {
               spellcheck: "false"
             },
             errorMessage: {
-              text: "Enter your full name"
+              text: "Enter the name of your organisation"
             }
           }) }}
         {% elif errorName == true %}
@@ -40,27 +40,28 @@
             }) }}
           {{ govukInput({
               label: {
-                text: "What is your full name?",
+                text: "What is the name of your organisation?",
                 isPageHeading: true,
                 classes: "govuk-label--xl"
               },
-              id: "name",
-        name: "name",
+              id: "organisation-name",
+        name: "organisation-name",
         autocomplete: "name",
         attributes: {
           spellcheck: "false"
         },
         errorMessage: {
-            text: "Enter your full name"
+            text: "Enter the name of your organisation"
           }
         }) }}
         {% else %}
           {{ govukInput({
               label: {
-                text: "What is your full name?",
+                text: "What is the name of your organisation?",
                 isPageHeading: true,
                   classes: "govuk-label--xl"
               },
+
               id: "name",
               name: "name",
               autocomplete: "name",
@@ -82,7 +83,7 @@ idPrefix: "divulge-info",
 name: "divulge-info",
 fieldset: {
 legend: {
-text: "Can we share your name and email address with the company if they request that information?",
+text: "Can we share the name of your organisation and your email address with the company if they request that information?",
 isPageHeading: false,
 classes: "govuk-fieldset__legend--m"
 }
@@ -109,7 +110,7 @@ text: "No"
   name: "divulge-info",
   fieldset: {
     legend: {
-      text: "Can we share your name and email address with the company if they request that information?",
+      text: "Can we share the name of your organisation and your email address with the company if they request that information?",
       isPageHeading: false,
       classes: "govuk-fieldset__legend--m"
     }

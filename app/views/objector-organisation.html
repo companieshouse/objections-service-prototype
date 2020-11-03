@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+  Who is objecting
+{% endblock %}
+{% block backLink %}
+  {{ govukBackLink({
+    href: "/",
+    text: "Back"
+  }) }}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/objector-organisation" method="post">
+        {% if errorDivulge === true %}
+          {{ govukErrorSummary({
+    titleText: "There is a problem",
+    errorList: errorList
+  }) }}
+          {{ govukRadios({
+classes: "govuk-radios--inline",
+idPrefix: "objector-info",
+name: "objector-info",
+fieldset: {
+legend: {
+text: "Who is applying to object?",
+isPageHeading: false,
+classes: "govuk-fieldset__legend--m"
+}
+},
+errorMessage: {
+text: "Select if you are objecting on behalf of yourself or a client"
+},
+items: [
+{
+value: "objector",
+text: "I'm objecting for myself"
+},
+{
+value: "organisation",
+text: "I'm objecting on behalf of a client"
+}
+]
+}) }}
+        {% endif %}
+
+        {{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "objector",
+  name: "objector",
+  fieldset: {
+    legend: {
+      text: "Who is applying to object?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  items: [
+    {
+      value: "objector",
+      text: "I'm objecting for myself"
+    },
+    {
+      value: "organisation",
+      text: "I'm objecting on behalf of a client"
+    }
+  ]
+}) }}
+
+        {{ govukInput({
+        id: "editId",
+        name: "editId",
+        type: "hidden",
+        value: id
+      }) }}
+
+        {{ govukButton({
+            text: "Continue"
+          }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
