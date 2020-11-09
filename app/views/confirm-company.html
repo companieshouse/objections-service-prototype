@@ -22,7 +22,9 @@
         {% if scenario.company.actionCode === '4000' %}
           <p>No notice in The Gazette</p>
         {% elseif scenario.company.actionCode === '6000' %}
-          <p>No notice in The Gazette</p>
+          <p>Notice expired</p>
+        {% elseif scenario.company.actionCode === '8000' %}
+          <p>Currently no notice in The Gazette</p>
         {% else %}
           {{ scenario.company.datePublished}}
         {% endif %}
@@ -96,6 +98,12 @@
 }) }}
 
         {% if scenario.company.actionCode === '4000' %}
+          {{ govukButton({
+text: "Confirm and continue",
+href: "/no-gazette"
+}) }}
+
+        {% elseif scenario.company.actionCode === '8000' %}
           {{ govukButton({
 text: "Confirm and continue",
 href: "/no-gazette"
