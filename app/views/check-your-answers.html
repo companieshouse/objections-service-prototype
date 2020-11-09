@@ -15,6 +15,16 @@
 </ul>
 {% endset %}
 
+{% set objectorNameHTML %}
+{% if objector === 'objector' %}
+  <p class="govuk-!-font-weight-bold">Name</p>
+{% elseif objector === 'organisation' %}
+  <p class="govuk-!-font-weight-bold">Organisation</p>
+{% else %}
+  <p class="govuk-!-font-weight-bold">Objector</p>
+{% endif %}
+{% endset %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
@@ -45,10 +55,10 @@
           },
          {
            key: {
-             text: "Full name or organisation name"
+             html: objectorNameHTML
            },
            value: {
-             text: fullName
+             text: name
            },
            actions: {
               items: [

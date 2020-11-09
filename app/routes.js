@@ -20,9 +20,26 @@ router.get('/sign-in', function (req, res) {
 
 router.post('/sign-in', function (req, res) {
   req.session.email = req.body.email
-  res.redirect('/objecting-entity-name')
+  res.redirect('/objector-organisation')
 })
+router.get('/objector-organisation', function (req, res) {
+  res.render('objector-organisation', {
+    scenario: req.session.scenario
+  })
+})
+router.post('/objector-organisation', function (req, res) {
+  var objector = req.session.data['objector']
+  var scenario = req.session.scenario
 
+  switch (objector) {
+    case 'objector':
+      res.redirect('/objecting-entity-name')
+      break
+    case 'organisation':
+      res.redirect('/objecting-entity-organisation')
+      break
+  }
+})
 router.get('/objecting-entity-name', function (req, res) {
   var id = 0
   var info = ''
@@ -38,24 +55,24 @@ router.get('/objecting-entity-name', function (req, res) {
 })
 
 router.post('/objecting-entity-name', function (req, res) {
-  var fullName = req.session.data['full-name']
+  var name = req.session.data['name']
   var divulgeInfo = req.session.data['divulge-info']
   // var editId = req.body.editId
   var errors = []
 
-  if (fullName === '') {
+  if (name === '') {
     errors.push({
       text: 'Enter your full name',
-      href: '#full-name'
+      href: '#name'
     })
     res.render('objecting-entity-name', {
       errorName: true,
       errorList: errors
     })
-  } if (fullName === '@') {
+  } if (name === '@') {
     errors.push({
       text: 'Full name must only include letters a to z, hyphens, spaces and apostrophes',
-      href: '#full-name'
+      href: '#name'
     })
     res.render('objecting-entity-name', {
       errorNametwo: true,
@@ -67,6 +84,57 @@ router.post('/objecting-entity-name', function (req, res) {
       href: '#divulge-info'
     })
     res.render('objecting-entity-name', {
+      errorDivulge: true,
+      errorList: errors
+    })
+  } else {
+    res.redirect('/company-number')
+  }
+})
+router.get('/objecting-entity-organisation', function (req, res) {
+  var id = 0
+  var info = ''
+  // if (req.query.id) {
+    // id = req.query.id
+    // info = req.session.data['full-name'][id]
+    // res.render('objecting-entity-name', {
+      // id: id,
+      // info: info
+    // })
+  // } else {
+  res.render('objecting-entity-organisation')
+})
+
+router.post('/objecting-entity-organisation', function (req, res) {
+  var name = req.session.data['name']
+  var divulgeInfo = req.session.data['divulge-info']
+  // var editId = req.body.editId
+  var errors = []
+
+  if (name === '') {
+    errors.push({
+      text: 'Enter the name of your organisation',
+      href: '#name'
+    })
+    res.render('objecting-entity-organisation', {
+      errorName: true,
+      errorList: errors
+    })
+  } if (name === '@') {
+    errors.push({
+      text: 'Full name must only include letters a to z, hyphens, spaces and apostrophes',
+      href: '#name'
+    })
+    res.render('objecting-entity-organisation', {
+      errorNametwo: true,
+      errorList: errors
+    })
+  } if (divulgeInfo === 'undefined') {
+    errors.push({
+      text: 'Select yes if we can share your details',
+      href: '#divulge-info'
+    })
+    res.render('objecting-entity-organisation', {
       errorDivulge: true,
       errorList: errors
     })
@@ -176,7 +244,8 @@ router.post('/upload', function (req, res) {
 })
 router.get('/check-your-answers', function (req, res) {
   var scenario = req.session.scenario
-  var fullName = req.session.data['full-name']
+  var objector = req.session.data['objector']
+  var name = req.session.data['name']
   var divulgeInfo = req.session.data['divulge-info']
   var email = req.session.data.email
   var information = req.session.data.information
@@ -189,7 +258,8 @@ router.get('/check-your-answers', function (req, res) {
 
   res.render('check-your-answers', {
     scenario: scenario,
-    fullName: fullName,
+    objector: objector,
+    name: name,
     divulgeInfo: divulgeInfo,
     email: email,
     information: information,
