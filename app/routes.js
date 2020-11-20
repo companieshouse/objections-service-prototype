@@ -28,7 +28,7 @@ router.get('/objector-organisation', function (req, res) {
   })
 })
 router.post('/objector-organisation', function (req, res) {
-  var objector = req.body.objector
+  var objector = req.session.data['objector']
   var scenario = req.session.scenario
 
   switch (objector) {
@@ -244,6 +244,7 @@ router.post('/upload', function (req, res) {
 })
 router.get('/check-your-answers', function (req, res) {
   var scenario = req.session.scenario
+  var objector = req.session.data['objector']
   var name = req.session.data['name']
   var divulgeInfo = req.session.data['divulge-info']
   var email = req.session.data.email
@@ -257,6 +258,7 @@ router.get('/check-your-answers', function (req, res) {
 
   res.render('check-your-answers', {
     scenario: scenario,
+    objector: objector,
     name: name,
     divulgeInfo: divulgeInfo,
     email: email,

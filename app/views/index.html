@@ -1,8 +1,7 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+  Index
 {% endblock %}
 
 {% block content %}
@@ -13,32 +12,181 @@
         The GOV.UK Prototype Kit
         <span class="govuk-caption-xl">{{releaseVersion}}</span>
       </h1>{{releaseVersion | log }}
-      <p>
-        This kit lets you rapidly create HTML prototypes of GOV.UK services.
-      </p>
 
-      <p>
-        It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.
-      </p>
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-heading-m">Previously tested versions</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Version</th>
+            <th scope="col" class="govuk-table__header">Tested on</th>
+            <th scope="col" class="govuk-table__header govuk-!-width-two-thirds">Changes</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              <a href="https://objections-service-v4.herokuapp.com/">Version 4</th>
+              <td class="govuk-table__cell">W/C 16 Nov 2020</td>
+              <td class="govuk-table__cell">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                      Changes included in version 4
+                    </span>
+                  </summary>
+                  <div class="govuk-details__text">
+                    <ul class="govuk-list--bulletlist">
+                      <li>
+                        <a class="govuk-link" href="https://objections-service-v4.herokuapp.com/start">Start page content</a>
+                      </li>
+                      <li>
+                        <a class="govuk-link" href="https://objections-service-v4.herokuapp.com/objector-organisation">Who is objecting page</a>
+                      </li>
+                      <li>
+                        <a class="govuk-link" href="https://objections-service-v4.herokuapp.com/objecting-entity-name">Objecting entity name content. Logic based on previous page</a>
+                      </li>
+                      <li>
+                        Scenario for restored company: 00118000
+                      </li>
+                      <li>
+                        <a class="govuk-link" href="https://objections-service-v4.herokuapp.com/confirm-company">Logical wording under "Date notice published in The Gazette" for scenarios 00114000, 00116000, and 118000</a>
+                      </li>
+                      <li>
+                        <a class="govuk-link" href="https://objections-service-v4.herokuapp.com/check-your-answers">Name or Organisation name depending on who is objecting content change</a>
+                      </li>
+                      <li>
+                        <a class="govuk-link" href="https://objections-service-v4.herokuapp.com/index">Index page for reference only</a>
+                      </li>
+                    </ul>
+                  </div>
+                </details>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">
+                <a href="https://objections-service-v3.herokuapp.com/">Version 3</th>
+                <td class="govuk-table__cell">W/C 29 Sep 2020</td>
+                <td class="govuk-table__cell">
+                  <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Changes included in version 3
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list--bulletlist">
+                        <li>
+                          <a class="govuk-link" href="https://objections-service-v3.herokuapp.com/">What is the Gazette details added to start page</a>
+                        </li>
+                        <li>
+                          <a class="govuk-link" href="https://objections-service-v3.herokuapp.com/objecting-entity-name">Divulge added and change to who is objecting content</a>
+                        </li>
+                        <li>
+                          <a class="govuk-link" href="https://objections-service-v3.herokuapp.com/company-number">content change to hint text of company number</a>
+                        </li>
+                        <li>
+                          <a class="govuk-link" href="https://objections-service-v3.herokuapp.com/confirm-company">Change of wording under "Date notice published in The Gazette" for scenarios 00114000, 00116000, and 118000</a>
+                        </li>
+                        <li>
+                          <a class="govuk-link" href="https://objections-service-v3.herokuapp.com/upload">Content change from "upload" to "add"</a>
+                        </li>
+                        <li>
+                          <a class="govuk-link" href="https://objections-service-v3.herokuapp.com/check-your-answers">Email field added</a>
+                        </li>
+                        <li>
+                          Survey links updated
+                        </li>
+                        <li>
+                          Page titles updated
+                        </li>
+                      </ul>
+                    </div>
+                  </details>
+                </td>
+              </tr>
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header">
+                  <a href="https://objections-service-v2.herokuapp.com/">Version 2</th>
+                  <td class="govuk-table__cell">W/C 8 Sep 2020</td>
+                  <td class="govuk-table__cell">
+                    <details class="govuk-details" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Changes included in version 2
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                        <ul class="govuk-list--bulletlist">
+                          <li>
+                            <a class="govuk-link" href="https://objections-service-v2.herokuapp.com/upload-with-doc">Document uploaded page added</a>
+                          </li>
+                          <li>
+                            <a class="govuk-link" href="https://objections-service-v2.herokuapp.com/remove-document">Remove document page added</a>
+                          </li>
+                          <li>
+                            <a class="govuk-link" href="https://objections-service-v2.herokuapp.com/emails/user-email">User email content changes</a>
+                          </li>
+                          <li>
+                            <a class="govuk-link" href="https://objections-service-v2.herokuapp.com/emails/business-email">Business email content changes</a>
+                          </li>
+                          <li>
+                            <a class="govuk-link" href="https://objections-service-v2.herokuapp.com/page-not-found">Page Not Found error page added</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </details>
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">
+                    <a href="https://objections-service-v1.herokuapp.com/">Version 1</th>
+                    <td class="govuk-table__cell">W/C 26 Aug 2020</td>
+                    <td class="govuk-table__cell">
+                      <details class="govuk-details" data-module="govuk-details">
+                        <summary class="govuk-details__summary">
+                          <span class="govuk-details__summary-text">
+                            Changes included in version 1
+                          </span>
+                        </summary>
+                        <div class="govuk-details__text">
+                          <ul class="govuk-list--bulletlist">
+                            <li>
+                              <a class="govuk-link" href="https://objections-service-v1.herokuapp.com/start">Start page content</a>
+                            </li>
+                            <li>
+                              <a class="govuk-link" href="https://objections-service-v1.herokuapp.com/objecting-entity-name">Objecting entitity name page</a>
+                            </li>
+                            <li>
+                              Scenario for company not published company: 00114000
+                            </li>
+                            <li>
+                              Scenario for company struck off the register: 00116000
+                            </li>
+                            <li>
+                              <a class="govuk-link" href="https://objections-service-v1.herokuapp.com/check-your-answers">Objector details and change links added</a>
+                            </li>
+                            <li>
+                              <a class="govuk-link" href="https://objections-service-v1.herokuapp.com/confirmation">Consistency with dates content</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </details>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
 
-      <h2 class="govuk-heading-m">About this page</h2>
+              <h2 class="govuk-heading-m">Examples and documentation</h2>
 
-      <p>We recommend you add links to your prototype to this page, rather than delete it.
-        You'll find this page in the kit at '/app/views/index.html'.</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  <a href="/docs/tutorials-and-examples">Example pages and documentation</a>
+                </li>
+                <li>
+                  <a href="https://design-system.service.gov.uk">GOV.UK Design System</a>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-      <p>You can change the service name by editing the file '/app/config.js'.</p>
-
-      <h2 class="govuk-heading-m">Examples and documentation</h2>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="/docs/tutorials-and-examples">Example pages and documentation</a>
-        </li>
-        <li>
-          <a href="https://design-system.service.gov.uk">GOV.UK Design System</a>
-        </li>
-      </ul>
-    </div>
-</div>
-
-{% endblock %}
+        {% endblock %}
