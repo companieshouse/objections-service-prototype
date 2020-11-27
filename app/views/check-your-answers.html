@@ -119,6 +119,23 @@
 
       {{ govukSummaryList({
         rows: [
+        {
+          key: {
+            text: "Name of objector"
+          },
+          value: {
+            text: clientName
+          },
+          actions: {
+            items: [
+              {
+                href: "/objector-details" + loop.index0,
+                text: "Change",
+                visuallyHiddenText: "change the name of the objector"
+              }
+            ]
+          }
+        },
           {
             key: {
               text: "Reason for objection"

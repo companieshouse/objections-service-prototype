@@ -4,7 +4,7 @@
 {% endblock %}
 {% block backLink %}
   {{ govukBackLink({
-    href: "/",
+    href: "/objector-organisation",
     text: "Back"
   }) }}
 {% endblock %}
@@ -135,7 +135,8 @@ text: "No"
       }) }}
 
         {{ govukButton({
-          text: "Continue"
+          text: "Continue",
+          href: "/objector-details"
         }) }}
       </form>
     </div>

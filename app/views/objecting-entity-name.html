@@ -30,7 +30,7 @@
               spellcheck: "false"
             },
             errorMessage: {
-              text: "Enter your full name"
+              text: "Enter your name, or the name of the company you work for"
             }
           }) }}
         {% elif errorName == true %}
@@ -40,7 +40,7 @@
             }) }}
           {{ govukInput({
               label: {
-                text: "What is your full name?",
+                text: "What is your name, or the name of the company you work for?",
                 isPageHeading: true,
                 classes: "govuk-label--xl"
               },
@@ -57,7 +57,7 @@
         {% else %}
           {{ govukInput({
               label: {
-                text: "What is your full name?",
+                text: "What is your name, or the name of the company you work for?",
                 isPageHeading: true,
                   classes: "govuk-label--xl"
               },
@@ -109,7 +109,7 @@ text: "No"
   name: "divulge-info",
   fieldset: {
     legend: {
-      text: "Can we share your name and email address with the company if they request that information?",
+      text: "Can we share the name provided and email address with the company if they request that information?",
       isPageHeading: false,
       classes: "govuk-fieldset__legend--m"
     }

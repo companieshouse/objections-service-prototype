@@ -139,25 +139,25 @@ router.post('/objecting-entity-organisation', function (req, res) {
       errorList: errors
     })
   } else {
-    res.redirect('/company-number')
+    res.redirect('/objector-details')
   }
 })
 
-router.get('/objecting-entity-contact-details', function (req, res) {
+router.get('/objector-details', function (req, res) {
   req.session.scenario = {}
-  res.render('objecting-entity-contact-details')
+  res.render('objector-details')
 })
 
-router.post('/objecting-entity-contact-details', function (req, res) {
-  var email = req.session.data.email
+router.post('/objector-details', function (req, res) {
+  var clientName = req.session.data.clientName
   var errors = []
-  if (email === '') {
+  if (clientName === '') {
     errors.push({
-      text: 'Enter your email address',
-      href: '#email'
+      text: 'Enter the name of the client you are objecting on behalf of',
+      href: '#clientName'
     })
-    res.render('objecting-entity-contact-details', {
-      errorEmail: true,
+    res.render('objector-details', {
+      errorClientName: true,
       errorList: errors
     })
   } else {
@@ -245,6 +245,7 @@ router.post('/upload', function (req, res) {
 router.get('/check-your-answers', function (req, res) {
   var scenario = req.session.scenario
   var objector = req.session.data['objector']
+  var clientName = req.session.data['clientName']
   var name = req.session.data['name']
   var divulgeInfo = req.session.data['divulge-info']
   var email = req.session.data.email
@@ -259,6 +260,7 @@ router.get('/check-your-answers', function (req, res) {
   res.render('check-your-answers', {
     scenario: scenario,
     objector: objector,
+    clientName: clientName,
     name: name,
     divulgeInfo: divulgeInfo,
     email: email,
