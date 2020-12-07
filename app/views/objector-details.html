@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+  Your full name or the name of your organisation
+{% endblock %}
+{% block backLink %}
+  {{ govukBackLink({
+    href: "/objecting-entity-organisation",
+    text: "Back"
+  }) }}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/objecting-entity-name" method="post">
+
+        {{ govukInput({
+              label: {
+                text: "What is the name of the client you are objecting on behalf of?",
+                isPageHeading: true,
+                  classes: "govuk-label--xl"
+                },
+                  hint: {
+                    text: "This information will not be shared with the company being struck off"
+              },
+              id: "clientName",
+              name: "clientName",
+              autocomplete: "clientName",
+              attributes: {
+                spellcheck: "false"
+              }
+          }) }}
+
+        {{ govukInput({
+        id: "editId",
+        name: "editId",
+        type: "hidden",
+        value: id
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
