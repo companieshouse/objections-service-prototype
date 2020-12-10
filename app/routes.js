@@ -204,6 +204,13 @@ router.get('/notice-expired', function (req, res) {
     scenario: scenario
   })
 })
+router.get('/2nd-gaz', function (req, res) {
+  var scenario = req.session.scenario
+
+  res.render('2nd-gaz', {
+    scenario: scenario
+  })
+})
 router.get('/no-gazette', function (req, res) {
   var scenario = req.session.scenario
 
