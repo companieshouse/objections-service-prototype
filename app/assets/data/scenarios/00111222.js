@@ -7,7 +7,7 @@ module.exports = {
     incorporationDate: '1 April 2010',
     companyType: 'Private Limited Company',
     address: '125 Feather Hedge<br>Salisbury<br>SP4 7DE',
-    actionCode: '5000',
+    actionCode: '5005',
     datePublished: '17 November 2020',
     expiryDate: '16 December 2020'
   }
