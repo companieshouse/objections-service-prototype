@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+  The name of your organisation
+{% endblock %}
+{% block backLink %}
+  {{ govukBackLink({
+    href: "/",
+    text: "Back"
+  }) }}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/objecting-entity-name" method="post">
+
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+  {
+    text: "Enter the name of your organisation",
+    href: "#organisation-name"
+  },
+{
+text: "Select yes if we can share your details",
+href: "#divulge-info"
+}
+ ]
+        }) }}
+
+        {{ govukInput({
+            label: {
+              text: "What is the name of your organisation?",
+              isPageHeading: true,
+              classes: "govuk-label--xl"
+            },
+            id: "organisation-name",
+      name: "organisation-name",
+      autocomplete: "name",
+      attributes: {
+        spellcheck: "false"
+      },
+      errorMessage: {
+          text: "Enter the name of your organisation"
+        }
+      }) }}
+
+          {{ govukRadios({
+classes: "govuk-radios--inline",
+idPrefix: "divulge-info",
+name: "divulge-info",
+fieldset: {
+legend: {
+text: "Can we share the name of your organisation and your email address with the company if they request that information?",
+isPageHeading: false,
+classes: "govuk-fieldset__legend--m"
+}
+},
+errorMessage: {
+text: "Select yes if we can share your details"
+},
+items: [
+{
+value: "yes",
+text: "Yes"
+},
+{
+value: "no",
+text: "No"
+}
+]
+}) }}
+
+        {{ govukInput({
+        id: "editId",
+        name: "editId",
+        type: "hidden",
+        value: id
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
